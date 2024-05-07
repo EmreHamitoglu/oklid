@@ -1,9 +1,22 @@
-def FirstFactorial(num):
-    if num == 0 or num == 1:
-        return 1
-    else:
-        return num * FirstFactorial(num - 1)
+import math
 
-# Test the function with example inputs
-print(FirstFactorial(4))  # Output: 24
-print(FirstFactorial(8))  # Output: 40320
+# Noktaların Tanımlanması
+points = [(1, 2), (3, 4), (5, 6), (7, 8)]  # Örnek olarak noktaları tanımlayalım
+
+# Öklid Mesafesi İçin Bir Fonksiyon Yazma
+def euclideanDistance(point1, point2):
+    x1, y1 = point1
+    x2, y2 = point2
+    distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+    return distance
+
+# Mesafelerin Hesaplanması
+distances = []
+for i in range(len(points)):
+    for j in range(i+1, len(points)):  # Bir noktanın kendisiyle değil, diğer noktalarla mesafeleri hesaplanmalı
+        distance = euclideanDistance(points[i], points[j])
+        distances.append(distance)
+
+# Minimum Mesafenin Bulunması
+min_distance = min(distances)
+print("Minimum mesafe:", min_distance)
